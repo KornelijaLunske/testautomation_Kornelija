@@ -1,0 +1,24 @@
+{
+  "name": "testautomation_kornelija",
+  "version": "1.0.0",
+  "description": "Pakeitimas",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@playwright/test": "^1.13.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KornelijaLunske/testautomation_Kornelija.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KornelijaLunske/testautomation_Kornelija/issues"
+  },
+  "homepage": "https://github.com/KornelijaLunske/testautomation_Kornelija#readme",
+  "keywords": []
+}
