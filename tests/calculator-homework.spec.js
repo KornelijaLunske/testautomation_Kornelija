@@ -1,22 +1,30 @@
 const { test, expect, selectors } = require('@playwright/test');
+const {CalculatorPage} = require ('../pages/CalculatorPage')
 
-test.only ('Checks that BasicCalculator page can be opened', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+test.describe('',() => {
+    let page;
+    test.beforeAll(async ({browser}) => {
+        page = await browser.newPage ();
+        startPage = new CalculatorPage(page);
+    });
+    test.beforeEach (async () => {
+        await startPage.goto();
+    });
+
+test.only ('Checks that BasicCalculator page can be opened', async () => {
     const isBodyVisible = await page.isVisible('#main-body');
 
     expect(isBodyVisible).toBe(true);
   });
 
-  test('Checks that Build can be selected', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+  test('Checks that Build can be selected', async () => {
     await page.waitForSelector('#main-body');
     const Click = await page.click("#selectBuild");
 
     expect(true).toBe(true);
   });
 
-  test.only ('Checks that Calculate button works', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+  test.only ('Checks that Calculate button works', async () => {
     await page.fill('#number1Field', '10');
     await page.fill('#number2Field', '20');
     await page.click('#calculateButton');
@@ -25,23 +33,20 @@ test.only ('Checks that BasicCalculator page can be opened', async ({ page }) =>
     expect(isAnswerVisible).toBe(true);
 });
 
-test('Checks that operation can be chosen', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+test('Checks that operation can be chosen', async () => {
     await page.click("#selectOperationDropdown");
     const subtract = await page.getAttribute('#selectOperationDropdown', 'value=1');
 
 });
 
-test.only ('Checks that integers only be selected', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+test.only ('Checks that integers only be selected', async () => {
     await page.click('#integerSelect');
     const isCheckmarkVisible = await page.isVisible('#integerSelect');
 
     expect(isCheckmarkVisible).toBe(true);
 });
 
-test.only ('Checks that answer field can be cleared', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+test.only ('Checks that answer field can be cleared', async () => {
     await page.fill('#number1Field', '10');
     await page.fill('#number2Field', '20');
     await page.click('#calculateButton');
@@ -51,8 +56,7 @@ test.only ('Checks that answer field can be cleared', async ({ page }) => {
     expect(isAnswerfieldclearVisible).toBe(true);
 });
 
-test.only ('Checks that answer with integers shows', async ({ page }) => {
-    await page.goto('https://testsheepnz.github.io/BasicCalculator');
+test.only ('Checks that answer with integers shows', async () => {
     await page.click('#integerSelect');
     await page.fill('#number1Field', '10.3');
     await page.fill('#number2Field', '20.3');
@@ -61,4 +65,4 @@ test.only ('Checks that answer with integers shows', async ({ page }) => {
 
     expect(isIntegerAnswerVisible).toBe(true);
 });
-
+});
