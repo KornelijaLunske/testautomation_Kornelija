@@ -7,11 +7,13 @@ test.describe('',() => {
         page = await browser.newPage ();
         startPage = new CalculatorPage(page);
     });
+
     test.beforeEach (async () => {
-        await startPage.goto();
-        await startPage.fill ();
-        await startPage.click ();
-    });  
+          await startPage.goto();
+          await startPage.fill ();
+          await startPage.click ();
+    
+    });
     
 
 test.only('Checks that BasicCalculator page can be opened', async () => {
